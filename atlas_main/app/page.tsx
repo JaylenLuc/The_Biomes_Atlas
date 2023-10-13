@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import fetch_feature_server from '../pages/api/biomes'
+import {MapComponent} from '../pages/api/biomes'
 export default function Home() {
   return (
     <main>
@@ -9,7 +9,7 @@ export default function Home() {
       <br></br>
       <a href="https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer/layers">base map--ServerFeature</a>
       <br></br>
-      <Link href="/users">FETCH FEATURE SERVER</Link>
+      <Link href="/users">RENDER MAP</Link>
       <br></br>
 
     </main>

@@ -1,12 +1,14 @@
 'use client';
 import React from 'react'
+import 'app/globals.css'
 import Link from 'next/link'
-import UserClick from './userclick'
+import MapBuilder from './mapBuilder'
 const Userinter = () => {
     return (
-        <div>
-            <UserClick />
-        </div>
+
+        <MapBuilder />
+
+        
     )
 }
 

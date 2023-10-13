@@ -17,8 +17,15 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  
   background-color: burlywood;
   padding: 20rem;
   
+}
+
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
