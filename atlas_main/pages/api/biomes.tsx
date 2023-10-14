@@ -1,5 +1,5 @@
 //fetch data from endpoints
-import React from 'react'
+import React, { useRef } from 'react'
 import { useEffect } from 'react';
 import 'app/globals.css'
 import { executeQueryJSON } from '@arcgis/core/rest/query'
@@ -13,29 +13,35 @@ import Expand from '@arcgis/core/widgets/Expand'
 import LayerView from "@arcgis/core/views/layers/LayerView.js";
 import Map from "@arcgis/core/Map.js";
 import { Main } from 'next/document';
-
-
+import { loadModules } from "esri-loader";
 const BIOMES_LAYER = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer/0"
 const BIOMES_SERVICE = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer"
 const BASE_MAP =  "https://server.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer/0"
 
-export function MapComponent() {
+ const MapComponent = () => {
+   
     const loadMap = () => {
+        console.log("not null")
         const map = new Map({
             basemap: "terrain"
         });
 
         const view = new MapView({
             map: map,
-            container: "viewDiv"
-        })
+            container: 'mapview',
+            center: [137.8239,36.2068],
+            zoom: 5,
+        });
+
     }
 
     useEffect(() => {
         loadMap();
-    }, []);
 
-    return  <body><main><div style={{ height : 1300, width : 1900 }} id='viewDiv'></div></main></body>
+    }, []);
+  
+    return  <div style={{ height : 1500, width: 1500 }} id='mapview'></div>
+
 }
 
 // const fetch_feature_server = async () => {
@@ -74,4 +80,4 @@ export function MapComponent() {
 //     )
 // }
 
-// export default fetch_feature_server
+export default MapComponent;

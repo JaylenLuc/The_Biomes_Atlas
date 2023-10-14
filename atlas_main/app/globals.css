@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import "https://js.arcgis.com/4.27/@arcgis/core/assets/esri/themes/dark/main.css";
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,16 +16,26 @@
   }
 }
 
-body {
-  
-  background-color: burlywood;
-  padding: 20rem;
-  
-}
-
-#viewDiv {
+#mapview {
   padding: 0;
   margin: 0;
+  height: 100%;
+  width: 100%;
+}
+html,
+body {
+  background-color: burlywood;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  padding: 0;
+}
+
+.viewDiv {
   height: 100%;
   width: 100%;
 }
