@@ -40,7 +40,7 @@ const BASE_MAP =  "https://server.arcgisonline.com/arcgis/rest/services/NatGeo_W
 
     }, []);
   
-    return  <div style={{ height : 1500, width: 1500 }} id='mapview'></div>
+    return  <div style={{ height : 1500, width: 2500 }} id='mapview'></div>
 
 }
 

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react'
-import 'app/globals.css'
+
 import MapComponent from '../../pages/api/biomes'
 const Userspage = () => {
 
