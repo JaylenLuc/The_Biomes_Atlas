@@ -17,21 +17,26 @@ import { loadModules } from "esri-loader";
 const BIOMES_LAYER = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer/0"
 const BIOMES_SERVICE = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer"
 const BASE_MAP =  "https://server.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer/0"
-
  const MapComponent = () => {
    
     const loadMap = () => {
         console.log("not null")
         const map = new Map({
-            basemap: "terrain"
+            basemap: "topo-vector"
         });
 
         const view = new MapView({
             map: map,
             container: 'mapview',
             center: [137.8239,36.2068],
-            zoom: 5,
+            zoom: 4,
         });
+
+        const biomeslayer = new FeatureLayer({
+            url: BIOMES_LAYER
+        });
+
+        map.add(biomeslayer);
 
     }
 
