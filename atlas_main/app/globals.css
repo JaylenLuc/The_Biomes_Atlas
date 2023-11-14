@@ -15,13 +15,22 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+div.esri-component.esri-legend.esri-widget.esri-widget--panel {
+  max-width: 175px;
+  max-height: 500px;
+}
+
 
 #mapview {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
+  height : 100vh;
 }
+
+#ZoomWidget {
+  padding: 10px;
+  top: 0 ;
+  right : 0;
+}
+
 html,
 body {
   background-color: burlywood;
