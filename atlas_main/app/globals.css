@@ -25,6 +25,10 @@ div.esri-component.esri-legend.esri-widget.esri-widget--panel {
   height : 100vh;
 }
 
+.btn_focus{
+  color: white;
+}
+
 #ZoomWidget {
   padding: 10px;
   top: 0 ;
