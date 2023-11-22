@@ -25,6 +25,11 @@ import AttributeColorInfo from "@arcgis/core/renderers/support/AttributeColorInf
 import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer.js";
 import Color from "@arcgis/core/Color.js";
 import Symbol from "@arcgis/core/symbols/Symbol.js";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer.js";
+import SpatialReference from "@arcgis/core/geometry/SpatialReference.js";
+import Graphic from "@arcgis/core/Graphic.js";
+import WebMap from "@arcgis/core/WebMap.js";
+
 
 const BIOMES_LAYER = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer/0"
 const BIOMES_SERVICE = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer"
@@ -60,28 +65,32 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
     useEffect(() => {
         //console.log("not null")
         const map = new Map({
-            basemap: "topo-vector"
+            basemap: "topo-vector",
+            
+            
+        });
+
+        const new_extent = new Extent({
+            ymin : -90,
+            ymax : 90,
+            xmin : -180,
+            xmax : 180
+
         });
 
         const view = new MapView({
             map: map,
             container: 'mapview',
-            center: [137.8239,36.2068],
             zoom: 4,
+            navigation: {
+                
+                browserTouchPanEnabled: false
+              },
+            extent: new_extent
         });
 
-        const biomeslayer = new FeatureLayer({
-            url: KOPPEN_LAYER,
-            title : "Köppen–Geiger climate Groups",
-            objectIdField: "climate",
-            geometryType : "polygon",
-            outFields: ["climate"],
-            //renderer: break_renderer
 
-            //blendMode: 'vivid-light'
-        });
         //console.log("biomeslayer.renderer: ",biomeslayer.fields);
-
 
         view.constraints = {
             minZoom: 2,
@@ -103,32 +112,45 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
 
 
         }; //rgb(195, 177, 225)
-        
-        const colored_features = executeQueryJSON(KOPPEN_LAYER, query ).then( feature =>{
-            const all_features = feature.features;
-            for (let i = 0; i < all_features.length; i++){
-                var current_f = all_features[i];
-                //console.log(current_f);
-                if (current_f.attributes.climate in climate_color_mapping){
-                    var color = new Color(climate_color_mapping[current_f.attributes.climate])
-                    current_f.symbol = new Symbol({
-                        color: color,
-                    
-                      });
-                }
-                    console.log(current_f.symbol);
-                    //current_f.symbol.color = color;
-            }
-        });
+        // let graphicslayer = new GraphicsLayer({visible: true});
+        // //let new_renderer = new SimpleRenderer();
+        // let all_features : __esri.Graphic[] = [];
+        // let features_to_del : __esri.Graphic[] = [];
+        // let addEdits_remove = {
+        //     deleteFeatures: features_to_del
+        // }
 
+
+ 
+        let biomes_renderer : __esri.UniqueValueRenderer = require('./renderer.json'); 
+        console.log(biomes_renderer);
+        const biomeslayer = new FeatureLayer({
+            url: KOPPEN_LAYER,
+            //id : "df762d5b783a4cbea211227b173bd7b3",
+            title : "Köppen–Geiger climate Groups",
+            //geometryType : "polygon",
+
+            //blendMode: 'vivid-light'
+        });
+        
+        
+        //console.log("graphics: ", graphicslayer.graphics); //confirmed
+
+        // const addEdits = {
+        //     addFeatures: all_features,
+        // }
+        
         // biomeslayer.renderer = {
         //     type: 'simple',
-        //     symbol: {
-        //        type: 'simple-fill',
-        //        color: [195, 177,225, .7]
-        //     }
+        //     uniqueValueInfos : all_features
         // };
+        biomeslayer.editingEnabled = true;
+        console.log();
+        biomeslayer.renderer = biomes_renderer;
         map.add(biomeslayer);
+        //map.add(graphicslayer);
+
+        console.log("source: ", biomeslayer.source);
 
         const legend = new Legend({
             view: view
@@ -164,7 +186,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         // let btn_foc =  useRef<HTMLInputElement>(null);
         var btn_foc = document.createElement('button');
         const text = document.createTextNode("Focus Modality");
-
+        btn_foc.style.background = "white";
         // add the text node to the newly created div
         btn_foc.appendChild(text);
 
@@ -174,42 +196,17 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
 
         //console.log("all groups ",all_groups);
 
-        let seen : string[] = [];
 
         if (btn_foc != null){
             view.ui.add(btn_foc, "top-right");
 
             btn_foc.addEventListener("click", async () => {
-                let biomes_query = biomeslayer.createQuery();
-                biomes_query.where = "1=1";
-                //biomes_query.outFields = ["climate"],
-                biomes_query.returnDistinctValues = true;
-                const {features} = await biomeslayer.queryFeatures(biomes_query);
-                
-                console.log(features.forEach((entry) => {
-                    const current = entry.attributes['climate'];
-                    if (! seen.includes(current) ){
-                        seen.push(current);
 
-                    }
-                }));
-                console.log("all climates: ", seen);
-                console.log(climate_color_mapping[ "Cfa Temperate-Withouth_dry_season-Hot_Summer"]);
             });
         
         }
 
-        biomeslayer.on("layerview-create", function(event){
-            console.log("renderer", biomeslayer.renderer);
-          });
-        // view.when(async () => { //view is rendered
-        //    // console.log("renderer", biomeslayer.renderer);
-        //     let biomes_query = biomeslayer.createQuery();
-        //     biomes_query.where = "1=1";
-        //     //outFields : ["climate"],
-        //     //returnDistinctValues : true,
-        //     const {features} = await biomeslayer.queryFeatures(biomes_query);
-        //     console.log(features);
+
 
         
     }, []);
