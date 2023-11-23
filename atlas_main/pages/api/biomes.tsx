@@ -67,7 +67,6 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         const map = new Map({
             basemap: "topo-vector",
             
-            
         });
 
         const new_extent = new Extent({
@@ -82,11 +81,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             map: map,
             container: 'mapview',
             zoom: 4,
-            navigation: {
-                
-                browserTouchPanEnabled: false
-              },
-            extent: new_extent
+
         });
 
 
@@ -123,30 +118,23 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
 
  
         let biomes_renderer : __esri.UniqueValueRenderer = require('./renderer.json'); 
+        let biomes_renderer_updated : __esri.UniqueValueRenderer = require('./uniquevalueinforenderer.json');
         console.log(biomes_renderer);
+        console.log(biomes_renderer_updated);
         const biomeslayer = new FeatureLayer({
             url: KOPPEN_LAYER,
             //id : "df762d5b783a4cbea211227b173bd7b3",
             title : "Köppen–Geiger climate Groups",
             //geometryType : "polygon",
-
+            outFields : ["*"],
+            renderer : biomes_renderer_updated
             //blendMode: 'vivid-light'
         });
-        
-        
-        //console.log("graphics: ", graphicslayer.graphics); //confirmed
-
-        // const addEdits = {
-        //     addFeatures: all_features,
-        // }
-        
-        // biomeslayer.renderer = {
-        //     type: 'simple',
-        //     uniqueValueInfos : all_features
-        // };
+    
+    
         biomeslayer.editingEnabled = true;
         console.log();
-        biomeslayer.renderer = biomes_renderer;
+       
         map.add(biomeslayer);
         //map.add(graphicslayer);
 
@@ -206,7 +194,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         
         }
 
-
+        
 
         
     }, []);

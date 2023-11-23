@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@arcgis/core": "^4.28.10",
     "esri-loader": "^3.7.0",
     "next": "^14.0.2"
   }
