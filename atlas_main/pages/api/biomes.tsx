@@ -107,11 +107,22 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
 
 
  
-        let biomes_renderer : __esri.UniqueValueRenderer = require('./renderer.json'); 
+        //let biomes_renderer : __esri.UniqueValueRenderer = require('./renderer.json'); 
         let biomes_renderer_updated : __esri.UniqueValueRenderer = require('./uniquevalueinforenderer.json');
         let all_fields = require("./fields.json");
         //console.log(biomes_renderer);
-        console.log("RENDERER: ",biomes_renderer_updated);
+        //console.log("RENDERER: ",biomes_renderer_updated);
+        
+
+        //web crawl data about temp and rainfall -> have a json, index the json based on climate
+        //-> retrieve the info and format it into content 
+        const popup_biomes = {
+            title : "{climate}",
+            content: "{Shape__Area}" // something like this biomes_info["climate"]["rainfall"]
+
+        }
+
+
         const biomeslayer = new FeatureLayer({
             url: KOPPEN_LAYER,
             //id : "df762d5b783a4cbea211227b173bd7b3",
@@ -119,7 +130,9 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             //geometryType : "polygon",
             fields: all_fields,
             renderer : biomes_renderer_updated,
-            opacity: 0.75
+            opacity: 0.75,
+            popupEnabled : true,
+            popupTemplate : popup_biomes
             //blendMode: 'vivid-light'
         });
         
