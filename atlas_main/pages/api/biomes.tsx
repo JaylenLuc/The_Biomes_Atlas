@@ -86,10 +86,8 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         });
         let layerlist = new LayerList({
             view: view
+            
           });
-        view.ui.add(layerlist, {
-        position: "top-left"
-        });
 
         //console.log("biomeslayer.renderer: ",biomeslayer.fields);
 
@@ -98,21 +96,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             maxZoom: 6
         };
         
-        const query = {
-            outFields : ["climate"],
-            returnDistinctValues : true,
-            where : "1=1"
-        };
-        var climate_color_mapping: { [climate: string] : string; } = {
-            "Cfa Temperate-Withouth_dry_season-Hot_Summer" : "rgba(0, 255, 0, 0.5)",
-            "ET Polar-Tundra" : "rgba(115, 155, 208, .5)",
-            "Cfb Temperate-Withouth_dry_season-Warm_Summer" : "rgba(193, 225, 193,0.5)",
-            "Dfc Cold-Withouth_dry_season-Cold_Summer" : "rgba(194, 215, 242,0.5)",
-            //"Dwb Cold-Dry_Winter-Warm_Summer" : 
 
-
-
-        }; //rgb(195, 177, 225)
         // let graphicslayer = new GraphicsLayer({visible: true});
         // //let new_renderer = new SimpleRenderer();
         // let all_features : __esri.Graphic[] = [];
@@ -160,7 +144,6 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         view.ui.add(scaleBar, {
             position: "bottom-left"
             });
-        view.ui.add(legend, "bottom-right");
         //console.log(biomeslayer);
         const comp = new Compass({
             view: view
@@ -168,17 +151,22 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         }); 
         view.ui.add(comp, "top-right");
 
+        let legend_expand = new Expand({
+            view: view,
+            content: legend,
+            expandIcon: "legend",
+            group: "bottom-right"
+          });
+          let layer_expand = new Expand({
+            view: view,
+            content: layerlist,
+            expandIcon: "layer",
+            group: "top-left"
+          });
+          
+          view.ui.add(legend_expand, "bottom-right");
+          view.ui.add(layer_expand, "top-left");
 
-
-
-        view.map.layers.forEach((biomeslayer) => {
-            //console.log("layer info: ", biomeslayer);
-            
-
-            //console.log(biomeslayer);
-            //if (layer.title)
-
-        });
         // let btn_foc =  useRef<HTMLInputElement>(null);
         var btn_foc = document.createElement('button');
         const text = document.createTextNode("Focus Modality");

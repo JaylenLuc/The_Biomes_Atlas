@@ -20,7 +20,7 @@ div.esri-component.esri-legend.esri-widget.esri-widget--panel {
   max-height: 500px;
 }
 .esri-layer-list {
-  max-width: 180px;
+  max-width: 250px;
 }
 
 #mapview {
