@@ -80,7 +80,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         const view = new MapView({
             map: map,
             container: 'mapview',
-            zoom: 4,
+            zoom: 3,
 
         });
 
@@ -128,10 +128,11 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             title : "Köppen–Geiger climate Groups",
             //geometryType : "polygon",
             fields: all_fields,
-            renderer : biomes_renderer_updated
+            renderer : biomes_renderer_updated,
+            opacity: 0.75
             //blendMode: 'vivid-light'
         });
-    
+        
         console.log(biomeslayer.fields);
         biomeslayer.editingEnabled = true;
 
