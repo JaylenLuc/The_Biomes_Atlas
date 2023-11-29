@@ -1,0 +1,40 @@
+ [
+    {
+        "fieldName": "FID",
+        "isEditable": false,
+        "label": "FID",
+        "visible": false
+    },
+    {
+        "fieldName": "climate",
+        "isEditable": true,
+        "label": "climate",
+        "visible": true
+    },
+    {
+        "fieldName": "identity_",
+        "isEditable": true,
+        "label": "identity",
+        "visible": true
+    },
+    {
+        "fieldName": "Shape__Area",
+        "format": {
+            "digitSeparator": true,
+            "places": 2
+        },
+        "isEditable": false,
+        "label": "Shape__Area",
+        "visible": false
+    },
+    {
+        "fieldName": "Shape__Length",
+        "format": {
+            "digitSeparator": true,
+            "places": 2
+        },
+        "isEditable": false,
+        "label": "Shape__Length",
+        "visible": false
+    }
+]

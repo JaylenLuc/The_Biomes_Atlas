@@ -1,8 +1,33 @@
 {     
 
     "type": "unique-value",
+    "visualVariables": [
+        {
+            "type": "size",
+            "valueExpression": "$view.scale",
+            "stops": [
+                {
+                    "size": 45.18072289156627,
+                    "value": 3059659
+                },
+                {
+                    "size": 22.590361445783135,
+                    "value": 9561434
+                },
+                {
+                    "size": 11.295180722891567,
+                    "value": 38245734
+                },
+                {
+                    "size": 0,
+                    "value": 76491469
+                }
+            ],
+            "target": "outline"
+        }
+    ],
     "field1": "climate",
-    "defaultSymbol": { "type": "simple-fill" },
+   
     "uniqueValueInfos": [
         {
             "label": "ET Polar-Tundra",
@@ -1570,13 +1595,14 @@
                     },
                     "values": [
                         [
-                            "Dwd Cold-Dry_Winter-Very_Cold_Winter"
+                            "Dwd Cold-Dry_Wintre-Very_Cold_Winter"
                         ]
                     ]
                 }
             ]
         }
-    ]
+    ],
+    "tables": []
 }
 
 

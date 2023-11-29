@@ -119,26 +119,27 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
  
         let biomes_renderer : __esri.UniqueValueRenderer = require('./renderer.json'); 
         let biomes_renderer_updated : __esri.UniqueValueRenderer = require('./uniquevalueinforenderer.json');
-        console.log(biomes_renderer);
-        console.log(biomes_renderer_updated);
+        let all_fields = require("./fields.json");
+        //console.log(biomes_renderer);
+        console.log("RENDERER: ",biomes_renderer_updated);
         const biomeslayer = new FeatureLayer({
             url: KOPPEN_LAYER,
             //id : "df762d5b783a4cbea211227b173bd7b3",
             title : "Köppen–Geiger climate Groups",
             //geometryType : "polygon",
-            outFields : ["*"],
+            fields: all_fields,
             renderer : biomes_renderer_updated
             //blendMode: 'vivid-light'
         });
     
-    
+        console.log(biomeslayer.fields);
         biomeslayer.editingEnabled = true;
-        console.log();
+
        
         map.add(biomeslayer);
         //map.add(graphicslayer);
 
-        console.log("source: ", biomeslayer.source);
+        //console.log("source: ", biomeslayer.source);
 
         const legend = new Legend({
             view: view
