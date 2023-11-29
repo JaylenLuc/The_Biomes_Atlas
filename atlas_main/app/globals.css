@@ -16,18 +16,18 @@
   }
 }
 div.esri-component.esri-legend.esri-widget.esri-widget--panel {
-  max-width: 175px;
+  max-width: 220px;
   max-height: 500px;
 }
-
+.esri-layer-list {
+  max-width: 180px;
+}
 
 #mapview {
   height : 100vh;
 }
 
-.btn_focus{
-  color: white;
-}
+
 
 #ZoomWidget {
   padding: 10px;

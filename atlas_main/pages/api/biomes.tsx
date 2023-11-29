@@ -29,6 +29,7 @@ import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer.js";
 import SpatialReference from "@arcgis/core/geometry/SpatialReference.js";
 import Graphic from "@arcgis/core/Graphic.js";
 import WebMap from "@arcgis/core/WebMap.js";
+import LayerList from "@arcgis/core/widgets/LayerList.js";
 
 
 const BIOMES_LAYER = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer/0"
@@ -83,7 +84,12 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             zoom: 3,
 
         });
-
+        let layerlist = new LayerList({
+            view: view
+          });
+        view.ui.add(layerlist, {
+        position: "top-left"
+        });
 
         //console.log("biomeslayer.renderer: ",biomeslayer.fields);
 
