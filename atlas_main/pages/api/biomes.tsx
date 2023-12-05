@@ -68,6 +68,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         const map = new Map({
             basemap: "topo-vector",
             
+            
         });
 
         const new_extent = new Extent({
@@ -132,7 +133,8 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             renderer : biomes_renderer_updated,
             opacity: 0.75,
             popupEnabled : true,
-            popupTemplate : popup_biomes
+            popupTemplate : popup_biomes,
+            
             //blendMode: 'vivid-light'
         });
         
@@ -189,7 +191,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
 
         const currentDiv = document.getElementById("btn_foc");
 
-        document.body.insertBefore(btn_foc, currentDiv);
+       //document.body.insertBefore(btn_foc, currentDiv);
 
         //console.log("all groups ",all_groups);
 
@@ -198,7 +200,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             view.ui.add(btn_foc, "top-right");
 
             btn_foc.addEventListener("click", async () => {
-
+                console.log("clicked");
             });
         
         }
