@@ -30,7 +30,7 @@ import SpatialReference from "@arcgis/core/geometry/SpatialReference.js";
 import Graphic from "@arcgis/core/Graphic.js";
 import WebMap from "@arcgis/core/WebMap.js";
 import LayerList from "@arcgis/core/widgets/LayerList.js";
-
+import axios from 'axios';
 
 const BIOMES_LAYER = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer/0"
 const BIOMES_SERVICE = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer"
@@ -115,8 +115,18 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         //console.log("RENDERER: ",biomes_renderer_updated);
         
 
-        //web crawl data about temp and rainfall -> have a json, index the json based on climate
-        //-> retrieve the info and format it into content 
+        //check if climate_map json file is empty --> if true --> web scrape --> store into JSON file --> read from it --> parse it onto popup_biomes
+        //if not empty --> read fromit --> then parse
+        //https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification#Group_C:_temperate/mesothermal_climates
+        var climate_mapping: { [climate: string] : string; } = {
+
+
+        }; 
+
+
+
+
+
         const popup_biomes = {
             title : "{climate}",
             content: "{Shape__Area}" // something like this biomes_info["climate"]["rainfall"]
@@ -138,7 +148,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
             //blendMode: 'vivid-light'
         });
         
-        console.log(biomeslayer.fields);
+        //console.log(biomeslayer.fields);
         biomeslayer.editingEnabled = true;
 
        
@@ -189,18 +199,18 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         // add the text node to the newly created div
         btn_foc.appendChild(text);
 
-        const currentDiv = document.getElementById("btn_foc");
+        const button_foc_ref = document.querySelector("btn_foc");
 
-       //document.body.insertBefore(btn_foc, currentDiv);
+        document.body.insertBefore(btn_foc, button_foc_ref);
 
         //console.log("all groups ",all_groups);
 
-
+        //console.log("exists");
         if (btn_foc != null){
             view.ui.add(btn_foc, "top-right");
-
+            //console.log("exists1");
             btn_foc.addEventListener("click", async () => {
-                console.log("clicked");
+
             });
         
         }
