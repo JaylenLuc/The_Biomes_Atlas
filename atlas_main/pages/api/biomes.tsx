@@ -2,35 +2,34 @@
 import React, { useRef } from 'react'
 import { useEffect } from 'react';
 import 'app/globals.css'
-import { executeQueryJSON } from '@arcgis/core/rest/query'
+// import { executeQueryJSON } from '@arcgis/core/rest/query'
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer.js";
-import config from '@arcgis/core/config'
-import ArcGISMap from '@arcgis/core/Map'
+// import config from '@arcgis/core/config'
+// import ArcGISMap from '@arcgis/core/Map'
 import MapView from '@arcgis/core/views/MapView'
 import Extent from '@arcgis/core/geometry/Extent'
-import { watch } from '@arcgis/core/core/reactiveUtils'
+// import { watch } from '@arcgis/core/core/reactiveUtils'
 import Expand from '@arcgis/core/widgets/Expand'
-import LayerView from "@arcgis/core/views/layers/LayerView.js";
+// import LayerView from "@arcgis/core/views/layers/LayerView.js";
 import Map from "@arcgis/core/Map.js";
-import { Main } from 'next/document';
-import { loadModules } from "esri-loader";
-import BasemapGallery from "@arcgis/core/widgets/BasemapGallery.js";
-import * as widget from "@arcgis/core/widgets/support/widget.js";
+// import { Main } from 'next/document';
+// import BasemapGallery from "@arcgis/core/widgets/BasemapGallery.js";
+// import * as widget from "@arcgis/core/widgets/support/widget.js";
 import Legend from "@arcgis/core/widgets/Legend.js";
 import ScaleBar from "@arcgis/core/widgets/ScaleBar.js";
-import UniqueValueRenderer from "@arcgis/core/renderers/UniqueValueRenderer.js";
+//import UniqueValueRenderer from "@arcgis/core/renderers/UniqueValueRenderer.js";
 import Compass from "@arcgis/core/widgets/Compass.js";
-import ClassBreaksRenderer from "@arcgis/core/renderers/ClassBreaksRenderer.js";
-import AttributeColorInfo from "@arcgis/core/renderers/support/AttributeColorInfo.js";
-import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer.js";
-import Color from "@arcgis/core/Color.js";
-import Symbol from "@arcgis/core/symbols/Symbol.js";
-import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer.js";
-import SpatialReference from "@arcgis/core/geometry/SpatialReference.js";
-import Graphic from "@arcgis/core/Graphic.js";
-import WebMap from "@arcgis/core/WebMap.js";
+// import ClassBreaksRenderer from "@arcgis/core/renderers/ClassBreaksRenderer.js";
+// import AttributeColorInfo from "@arcgis/core/renderers/support/AttributeColorInfo.js";
+// import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer.js";
+// import Color from "@arcgis/core/Color.js";
+// import Symbol from "@arcgis/core/symbols/Symbol.js";
+// import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer.js";
+// import SpatialReference from "@arcgis/core/geometry/SpatialReference.js";
+// import Graphic from "@arcgis/core/Graphic.js";
+// import WebMap from "@arcgis/core/WebMap.js";
 import LayerList from "@arcgis/core/widgets/LayerList.js";
-import axios from 'axios';
+//import axios from 'axios';
 import PopupTemplate from "@arcgis/core/PopupTemplate.js";
 import CustomContent from "@arcgis/core/popup/content/CustomContent.js";
 const BIOMES_LAYER = "https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GlobalBiomes/FeatureServer/0"
