@@ -1,35 +1,26 @@
-//fetch data from endpoints
+//1-add rainfall and temperature featurelayer. 
+//2 - perhaps change feature colors
+//3 - more webscraped data
 import React, { useRef } from 'react'
 import { useEffect } from 'react';
 import 'app/globals.css'
-// import { executeQueryJSON } from '@arcgis/core/rest/query'
+
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer.js";
-// import config from '@arcgis/core/config'
-// import ArcGISMap from '@arcgis/core/Map'
+
 import MapView from '@arcgis/core/views/MapView'
 import Extent from '@arcgis/core/geometry/Extent'
-// import { watch } from '@arcgis/core/core/reactiveUtils'
+
 import Expand from '@arcgis/core/widgets/Expand'
-// import LayerView from "@arcgis/core/views/layers/LayerView.js";
+
 import Map from "@arcgis/core/Map.js";
-// import { Main } from 'next/document';
-// import BasemapGallery from "@arcgis/core/widgets/BasemapGallery.js";
-// import * as widget from "@arcgis/core/widgets/support/widget.js";
+
 import Legend from "@arcgis/core/widgets/Legend.js";
 import ScaleBar from "@arcgis/core/widgets/ScaleBar.js";
-//import UniqueValueRenderer from "@arcgis/core/renderers/UniqueValueRenderer.js";
+
 import Compass from "@arcgis/core/widgets/Compass.js";
-// import ClassBreaksRenderer from "@arcgis/core/renderers/ClassBreaksRenderer.js";
-// import AttributeColorInfo from "@arcgis/core/renderers/support/AttributeColorInfo.js";
-// import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer.js";
-// import Color from "@arcgis/core/Color.js";
-// import Symbol from "@arcgis/core/symbols/Symbol.js";
-// import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer.js";
-// import SpatialReference from "@arcgis/core/geometry/SpatialReference.js";
-// import Graphic from "@arcgis/core/Graphic.js";
-// import WebMap from "@arcgis/core/WebMap.js";
+
 import LayerList from "@arcgis/core/widgets/LayerList.js";
-//import axios from 'axios';
+
 import PopupTemplate from "@arcgis/core/PopupTemplate.js";
 import CustomContent from "@arcgis/core/popup/content/CustomContent.js";
 
@@ -69,7 +60,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         
       });
 
-    //console.log("biomeslayer.renderer: ",biomeslayer.fields);
+
 
     view.constraints = {
         minZoom: 2,
@@ -77,27 +68,13 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
     };
     
 
-    // let graphicslayer = new GraphicsLayer({visible: true});
-    // //let new_renderer = new SimpleRenderer();
-    // let all_features : __esri.Graphic[] = [];
-    // let features_to_del : __esri.Graphic[] = [];
-    // let addEdits_remove = {
-    //     deleteFeatures: features_to_del
-    // }
 
 
 
-    //let biomes_renderer : __esri.UniqueValueRenderer = require('./renderer.json'); 
+    
     let biomes_renderer_updated : __esri.UniqueValueRenderer = require('./uniquevalueinforenderer.json');
     let all_fields = require("./fields.json");
-    //console.log(biomes_renderer);
-    //console.log("RENDERER: ",biomes_renderer_updated);
-    
 
-    //check if climate_map json file is empty --> if true --> web scrape --> store into JSON file --> read from it --> parse it onto popup_biomes
-    //if not empty --> read fromit --> then parse
-    //https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification#Group_C:_temperate/mesothermal_climates
-    //could also make each group its own class 
 
     //1- change colors to be color coordinating by class
     var climate_mapping: { [climate: string] : string; } = {
@@ -190,7 +167,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
                     ret_str = '<strong><FONT COLOR="#C1E1C1">Group C SubGroup Cfb</FONT></strong>:  temperate/mesothermal Climate,  oceanic Climate <br> \
                     <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/%E6%BC%93%E6%B1%9F%E5%B1%B1%E6%B0%B4.jpg/220px-%E6%BC%93%E6%B1%9F%E5%B1%B1%E6%B0%B4.jpg"><br>\
                     <strong>Classification Descriptor</strong>: Group C climates are defined by having an avergae temperature above 0 °C, in their coldest month but below 18 °C .\
-                    Cfa climates have significant precipitation in all seasons and its warmest month average temperature is above 22 °C.\
+                    Cfa climates have significant precipitation in all seasons, has its warmest month average temperature is above 22 °C and has at least four months averaging above 10 °C\
                     These climates usually occur on the eastern coasts and eastern sides of continents, usually in the high 20s and 30s \
                     latitudes. Unlike the dry summer Mediterranean climates, humid subtropical climates have a warm and wet flow from the \
                     tropics that creates warm and moist conditions in the summer months. As such, summer (not winter as is the case in Mediterranean climates) is often the wettest season.'
@@ -415,6 +392,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         title : "{climate}",
         content: [custom_content]
     });
+
 
 
 
