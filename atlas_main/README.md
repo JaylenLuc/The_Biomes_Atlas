@@ -1,3 +1,12 @@
+# The_Biomes_Atlas
+![image](https://github.com/JaylenLuc/The_Biomes_Atlas/assets/91278747/98f08db5-223a-4d6e-8659-d6ee1c5fcb73)
+
+
+
+
+
+Built with ArcGIS Maps SDK for JavaScript https://developers.arcgis.com/javascript/latest/ . Here is the link for the minified, unbuilt version of the ArcGIS Maps SDK for JavaScript ES modules: https://www.npmjs.com/package/@arcgis/core . 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
