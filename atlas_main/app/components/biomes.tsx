@@ -217,7 +217,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
                 }
                 case "BSk Arid-Steppe-Cold": {
                     ret_str = '<strong><FONT COLOR="#FAC898">Group B SubGroup Bsk</FONT></strong>:  arid (desert and semi-arid) Climate,  Cold semi-arid <br> \
-                    <img src = "https://upload.wikimedia.org/wikipedia/commons/9/99/Tree_on_a_mountain_-_from_monastry_of_Semen_Stolbnik_near_Aleppo_-_Syria.jpg"><br>\
+                    <img src = "https://upload.wikimedia.org/wikipedia/commons/6/6b/Henry_W._Coe_State_Park.jpg"><br>\
                     <strong>Classification Descriptor</strong>:These climates are characterized by the amount of annual precipitation less than a threshold value that approximates the potential \
                     evapotranspiration. Bsk are middle-latitude climate with the average annual temperature below 18 °C with annual precipitation that is in the range of 50%–100% of the threshold\
                     of potential evapotransipiration.'
@@ -225,8 +225,8 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
                 }
                 case "Csa Temperate-Dry_Summer-Hot_Summer": {
                     ret_str = '<strong><FONT COLOR="#C1E1C1">Group C SubGroup Csa</FONT></strong>:  temperate/mesothermal Climate,  mediterranean hot summer climates <br> \
-                    <img src = "https://www.mindat.org/imagecache/8c/fe/08923250014951324868499.jpg"><br>\
-                    <strong>Classification Descriptor</strong>: Group C climates are defined by having an avergae temperature above 0 °C, in their coldest month but below 18 °C .\
+                    <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Tossa_de_Mar_View.jpg/1280px-Tossa_de_Mar_View.jpg"><br>\
+                    <strong>Classification Descriptor</strong>: Group C climates are defined by having an average temperature above 0 °C, in their coldest month but below 18 °C .\
                     Csa climates have at least three times as much rain in the wettest month of winter as in the driest month of summer and has a warmest month average temperature above 22 °C.\
                     These climates usually occur on the western sides of continents between the latitudes of 30° and 45°.These climates are in the polar front region in winter, and thus have moderate temperatures and changeable, rainy weather. Summers are hot and dry, due to the domination of the subtropical high-pressure systems,\
                      except in the immediate coastal areas, where summers are milder due to the nearby presence of cold ocean currents that may bring fog but prevent rain.'
