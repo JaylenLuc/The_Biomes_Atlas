@@ -238,7 +238,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
                     <strong>Classification Descriptor</strong>:These climates are characterized by the amount of annual precipitation less than a threshold value that approximates the potential \
                     evapotranspiration.BWh has an annual precipitation is less than 50% of the potential evapotranspiration threshold and is a low-latitude climate with the average\
                     annual temperature above 18 °C. They are typically found under the subtropical ridge in the lower middle latitudes or the subtropics, \
-                    often between 20° and 33° north and south latitudes '
+                    often between 20° and 33° north and south latitudes. '
                     break;
                 }
                 case "Dfa Cold-Withouth_dry_season-Hot_Summer": {
