@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://js.arcgis.com/4.27/esri/themes/light/main.css");
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -22,11 +22,6 @@ div.esri-component.esri-legend.esri-widget.esri-widget--panel {
 .esri-layer-list {
   max-width: 250px;
 }
-
-#mapview {
-  height : 100vh;
-}
-
 
 
 #ZoomWidget {
