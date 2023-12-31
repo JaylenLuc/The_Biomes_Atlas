@@ -256,7 +256,7 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
 
            
             const res = await axios
-                .get('https://climateapi.scottpinkelman.com/api/v1/location/'+ inputValy.trim() +'/' +inputValx.trim())
+                .get('http://climateapi.scottpinkelman.com/api/v1/location/'+ inputValy.trim() +'/' +inputValx.trim())
             console.log(res.data)
             try{
                 if (res.data){
