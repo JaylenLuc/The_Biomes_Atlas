@@ -1,6 +1,7 @@
 //1-add rainfall and temperature featurelayer. 
 //2 - perhaps change feature colors
 //3 - more webscraped data
+"use client"
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react';
 import 'app/globals.css'
