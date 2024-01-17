@@ -5,7 +5,7 @@
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react';
 import 'app/globals.css'
-
+import calltoapi from '../pages/api/apiCall';
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer.js";
 
 import MapView from '@arcgis/core/views/MapView'
@@ -252,27 +252,8 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         event.preventDefault();
         // console.log(inputValx.trim());
         // console.log(inputValy.trim());
-        if (!(inputValx.trim() === "" || inputValy.trim()  === "")) {
-            console.log("Both are not empty");
-
-           
-            const res = await axios
-                .get('http://climateapi.scottpinkelman.com/api/v1/location/'+ inputValy.trim() +'/' +inputValx.trim())
-            console.log(res.data)
-            try{
-                if (res.data){
-                    console.log(res.data)
-                    console.log(res.data['return_values'][0]['koppen_geiger_zone'])
-                    console.log(res.data['return_values'][0]['zone_description'])
-                    setDisplay(res.data['return_values'][0]['koppen_geiger_zone'] + ': ' + res.data['return_values'][0]['zone_description']);
-                }
-            }catch(e ){
-                console.log("Your Coordinates are not valid")
-                setDisplay("Your Coordinates are not valid")
-            }
-
-            
-        }
+        var display_val = await calltoapi(inputValx,inputValy)
+        setDisplay(display_val)
         }
       
     

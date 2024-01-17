@@ -9,8 +9,10 @@ const Userspage = () => {
       
       
     return (
+        <>
         
         <EsriMapWithNoSSR />
+        </>
         
         
     )
