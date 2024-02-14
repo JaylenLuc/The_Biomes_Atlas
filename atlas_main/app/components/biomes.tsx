@@ -10,20 +10,15 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer.js";
 
 import MapView from '@arcgis/core/views/MapView'
 import Extent from '@arcgis/core/geometry/Extent'
-
 import Expand from '@arcgis/core/widgets/Expand'
-
 import Map from "@arcgis/core/Map.js";
-
 import Legend from "@arcgis/core/widgets/Legend.js";
 import ScaleBar from "@arcgis/core/widgets/ScaleBar.js";
-
 import Compass from "@arcgis/core/widgets/Compass.js";
-
 import LayerList from "@arcgis/core/widgets/LayerList.js";
-
 import PopupTemplate from "@arcgis/core/PopupTemplate.js";
 import CustomContent from "@arcgis/core/popup/content/CustomContent.js";
+import BasemapGallery from "@arcgis/core/widgets/BasemapGallery.js";
 
 import styles from './mapdiv.module.css'
 import content_switch from './content_switch'
@@ -48,14 +43,6 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
         
     });
 
-    const new_extent = new Extent({
-        ymin : -90,
-        ymax : 90,
-        xmin : -180,
-        xmax : 180
-
-    });
-
     const view = new MapView({
         map: map,
         container: styles.mapview,
@@ -75,19 +62,26 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
     };
     
 
+    let basemapGallery = new BasemapGallery({
+        view: view
+      });
 
 
 
+      let basemap_gallery_expander = new Expand({
+        view: view,
+        content: basemapGallery,
+        expandIcon: "basemap",
+        group: "top-right"
+      });
+
+      view.ui.add(basemap_gallery_expander, "top-right")
     
     let biomes_renderer_updated : __esri.UniqueValueRenderer = require('./uniquevalueinforenderer.json');
     let all_fields = require("./fields.json");
 
 
-    //1- change colors to be color coordinating by class
-    var climate_mapping: { [climate: string] : string; } = {
-        "ET Polar-Tundra" : "test_string"
-
-    }; 
+    
 
 
 
@@ -271,9 +265,9 @@ const KOPPEN_LAYER = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/
                     <input type="text" name= "Longitude" onChange={handleInputChangex}/>
                     <button> Search </button>
                     <br></br>
-                    {
-                        display? display : null
-                    }
+                    
+                    <output id = "output-wrapper">{display}</output>
+                    
                 </form>
 
             </div>
